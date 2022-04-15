@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const person = require('./models/Person');
 
 // read Json / midleware 
 // define request/response type
@@ -16,9 +15,8 @@ app.use(
 
 app.use(express.json());
 
-app.post('/person', (req, res) => {
-
-});
+const personRoutes = require('./routes/person.routes')
+app.use('/person', personRoutes);
 
 app.get('/', (req, res) => {
     res.json({message: 'Oi express'})
