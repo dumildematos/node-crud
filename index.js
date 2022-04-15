@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 // initial config
 const express = require('express');
 const mongoose = require('mongoose');
@@ -23,10 +23,10 @@ app.get('/', (req, res) => {
 })
 
 
-const DB_USER = 'root';
-const DB_PASS = 'DMyx7zZNl2fQpjNz'
+const DB_USER = process.env.DB_USER;
+const DB_PASSWORD = process.env.DB_PASSWORD;
 
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.q8sep.mongodb.net/bancoapinode1?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.q8sep.mongodb.net/bancoapinode1?retryWrites=true&w=majority`)
 .then(() => {
     console.log('mongodb connected!');
     app.listen(3000)
